@@ -9,26 +9,26 @@ file_modelo = os.path.join(ROOT, "models", "xgb_model.pkl")
 model = joblib.load(file_modelo)
 
 # slider para sensibilidade (recall) via threshold
-THRESHOLD = st.sidebar.slider("Threshold de classificação", 0.0, 1.0, 0.5, 0.01)
+THRESHOLD = st.sidebar.slider("Nível de Sensibilidade", 0.0, 1.0, 0.5, 0.01)
+
 st.sidebar.markdown("""
-**ℹ️ Sobre o Threshold de Classificação**  
-- Diminuir o valor → o modelo classifica **mais casos como graves**  
-  👉 aumenta o *recall* (menos falsos negativos), mas pode gerar mais falsos positivos.  
-- Aumentar o valor → o modelo classifica **menos casos como graves**  
-  👉 aumenta a *precisão* (menos falsos positivos), mas pode deixar passar casos graves.
+**ℹ️ Sobre o Nível de Sensibilidade**  
+- **Diminuir o valor** → o sistema marca **mais casos como graves**.  
+  ⚠️ Ajuda a não deixar passar pacientes que podem piorar, mas pode gerar alguns alarmes falsos.  
+
+- **Aumentar o valor** → o sistema marca **menos casos como graves**.  
+  ⚠️ Evita alarmes desnecessários, mas pode deixar de identificar alguns pacientes em risco.
 """)
 
 
-st.title("🦟 Previsão de Gravidade da Dengue")
-st.write("Aplicativo para estimar risco de gravidade da dengue usando Machine Learning (XGBoost).")
+st.title("🦟 Risco de Dengue Grave")
+st.write("Aplicativo de apoio à decisão clínica para identificar risco de dengue grave.")
 
 def bin_input(label: str) -> int:
     # retorna 0/1 (Não/Sim) no mesmo formato do treino
     return st.radio(label, [0, 1], format_func=lambda x: "Sim" if x == 1 else "Não")
 
-# ===============================
-# 📋 BLOCO 1 - Informações Gerais
-# ===============================
+# === 📋 BLOCO 1 - Informações Gerais ===
 st.header("📋 Informações Gerais")
 
 # Sexo (M=0, F=1)
@@ -65,9 +65,7 @@ else:
     gestante_cat_nao        = 1
     gestante_cat_nao_aplica = 0
 
-# ===============================
-# 🩺 BLOCO 2 - Sintomas Clínicos
-# ===============================
+# === 🩺 BLOCO 2 - Sintomas Clínicos ===
 st.header("🩺 Sintomas Clínicos")
 febre       = bin_input("Febre")
 mialgia     = bin_input("Mialgia")
@@ -84,9 +82,7 @@ leucopenia  = bin_input("Leucopenia")
 laco        = bin_input("Teste do Laço Positivo")
 dor_retro   = bin_input("Dor Retroorbital")
 
-# ==============================================
-# ⚕️ BLOCO 3 - Doenças Pré-existentes / Comorb.
-# ==============================================
+# === ⚕️ BLOCO 3 - Doenças Pré-existentes / Comorb. ===
 st.header("⚕️ Doenças Pré-existentes / Comorbidades")
 diabetes    = bin_input("Diabetes")
 hematolog   = bin_input("Doença Hematológica")
@@ -96,7 +92,7 @@ hipertensa  = bin_input("Hipertensão")
 acido_pept  = bin_input("Doença Péptica")
 auto_imune  = bin_input("Doença Autoimune")
 
-# ========= Monta exatamente X_train.columns =========
+# ========= Colunas do X_train.columns =========
 X_COLS = [
     'cs_sexo',
     'febre','mialgia','cefaleia','exantema','vomito','nausea',
@@ -127,10 +123,13 @@ if st.button("🔮 Prever Gravidade"):
     pred = int(prob >= THRESHOLD)
 
     st.subheader("📊 Resultado da Previsão")
-    st.write(f"**Probabilidade de caso grave:** {prob:.2%}")
-    st.write(f"Threshold aplicado: **{THRESHOLD:.2f}**")
+    st.write(f"Nível de Sensibilidade aplicada: **{THRESHOLD:.2f}**")
+    st.write(f"**Probabilidade de caso grave:** {prob:.2%}")    
 
     if pred == 1:
-        st.error("⚠️ O modelo prevê **ALTO risco de gravidade**.")
+        st.error("⚠️ Indicação de Risco **ALTO RISCO** de dengue grave. Requer maior atenção clínica.")
     else:
-        st.success("✅ O modelo prevê **BAIXO risco de gravidade**.")
+        st.success("✅ Indicação de **BAIXO RISCO** de dengue grave. Monitoramento padrão recomendado.")
+
+
+
