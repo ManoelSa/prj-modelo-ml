@@ -99,4 +99,21 @@ http://localhost:8501
 
 ```
 
+## 🏆 Escolha do Modelo Final
+
+Foram testados três algoritmos principais, comparados pelas métricas mais relevantes para o problema (foco na **classe 1 – casos graves**).
+
+| Modelo                  | Accuracy | Precision | Recall | F1-score | ROC AUC |
+|--------------------------|----------|-----------|--------|----------|---------|
+| **XGBClassifier**        | 0.706    | 0.056     | **0.639** | **0.103**  | **0.731** |
+| DecisionTreeClassifier   | 0.696    | 0.053     | 0.624  | 0.098    | 0.712   |
+| LogisticRegression       | 0.700    | 0.052     | 0.598  | 0.095    | 0.702   |
+
+### Critérios da escolha
+- **Recall**: XGBoost obteve o melhor valor, fundamental para **não deixar de identificar casos graves**.  
+- **ROC AUC**: maior separação entre classes, garantindo maior robustez.  
+- **F1-score**: também superior, mesmo com o desbalanceamento da base.  
+- **Conclusão**: o modelo final escolhido foi o **XGBoost**, salvo em `models/xgb_model.pkl`. 
+
+
 > ℹ️ _Aviso: Este projeto tem fins educacionais e de pesquisa. O modelo não substitui avaliação médica._
