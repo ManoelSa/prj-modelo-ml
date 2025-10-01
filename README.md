@@ -54,7 +54,7 @@ prj-modelo-ml/
 
 ```
 
-## Fluxo de Uso
+## 🔀 Fluxo de Uso
 
 ```text
 [Usuário] --(input de dados clínicos)--> Streamlit 
@@ -70,11 +70,11 @@ prj-modelo-ml/
 
 ```
 
-## Exemplos de uso Localmente
+## 💻 Exemplos de uso Localmente
 ```bash
 # 1. Clone o repositório
 git https://github.com/ManoelSa/prj-modelo-ml.git
-cd sua-pasta
+cd prj-modelo-ml
 
 # 2. (Opcional) Crie e ative um ambiente virtual
 python -m venv venv
@@ -84,13 +84,19 @@ venv\Scripts\activate #Linux: source venv/bin/activate
 pip install -r requirements.txt
 
 # 4. Modelo pré-treinado já disponível
-#O arquivo models/xgb_model.pkl já pode ser usado pela aplicação
+# O arquivo models/xgb_model.pkl já pode ser usado pela aplicação
 
 # 5. (Opcional) Treinar novamente o modelo
 # Abra e execute o notebook em: notebook/modelo.ipynb
+# Obs.: A etapa de "Tuning hiperparam - Conferindo melhores modelos" leva em média uns 20 min para execução.
 
 # 6. Execute a aplicação Streamlit
 cd src
 streamlit run app.py
 
+# 7. Url de Acesso
+http://localhost:8501
+
 ```
+
+> ℹ️ _Aviso: Este projeto tem fins educacionais e de pesquisa. O modelo não substitui avaliação médica._
