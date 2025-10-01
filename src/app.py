@@ -49,8 +49,8 @@ faixa_etaria_Crianca = 1 if faixa_etaria == "Crianca" else 0
 faixa_etaria_Idoso   = 1 if faixa_etaria == "Idoso"   else 0
 # Adolescente => todos 0
 
-# Gestante — só aparece se sexo = Feminino
-if cs_sexo == 1:
+# Gestante — só aparece se sexo = Feminino e faixa etária = Adolescente ou Adulto
+if cs_sexo == 1 and faixa_etaria not in ["Crianca", "Idoso"]:
     st.subheader("Gestante")
     gestante_cat = st.radio(
         "Selecione",
@@ -127,7 +127,7 @@ if st.button("🔮 Prever Gravidade"):
     st.write(f"**Probabilidade de caso grave:** {prob:.2%}")    
 
     if pred == 1:
-        st.error("⚠️ Indicação de Risco **ALTO RISCO** de dengue grave. Requer maior atenção clínica.")
+        st.error("⚠️ Indicação de **ALTO RISCO** de dengue grave. Requer maior atenção clínica.")
     else:
         st.success("✅ Indicação de **BAIXO RISCO** de dengue grave. Monitoramento padrão recomendado.")
 

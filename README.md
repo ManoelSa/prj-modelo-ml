@@ -125,8 +125,9 @@ Apesar de todos os modelos apresentarem métricas próximas e tendo como desafio
 
 Embora o **XGBoost** tenha apresentado os melhores resultados entre os modelos avaliados, as métricas globais ainda não são boas devido ao **forte desbalanceamento da base**.  
 
+- **Accuracy (~0.71)**: Devido o desbalanceamento da base ela parece alta mas acaba sendo enganosa, pois o modelo acerta muito a classe Não grave (0) que é a majoritária.
 - **Recall (~0.64)**: indica a proporção de casos graves (classe 1) que o modelo conseguiu identificar corretamente.  
-- **Precision (~0.06)**: mostra que, entre os casos classificados como graves, poucos realmente eram. Isso é esperado, pois o modelo tende a gerar **mais falsos positivos** para não deixar passar casos graves.  
+- **Precision (~0.06)**: mostra que, entre os casos classificados como graves, poucos realmente eram. Isso pode ser esperado, pois o modelo tende a gerar **mais falsos positivos** para não deixar passar casos graves.  
 - **F1-score (~0.10)**: baixo pelo desbalanceamento, mas superior ao dos demais modelos.  
 - **ROC AUC (~0.73)**: mede a capacidade do modelo de **ranquear** casos graves acima dos não graves (0.5 = aleatório; 1.0 = perfeito). É **independente do threshold** e indica **separação moderada** entre as classes.
 
