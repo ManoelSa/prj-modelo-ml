@@ -113,7 +113,12 @@ Foram testados três algoritmos principais, comparados pelas métricas mais rele
 - **Recall**: XGBoost obteve o melhor valor, fundamental para **não deixar de identificar casos graves**.  
 - **ROC AUC**: maior separação entre classes, garantindo maior robustez.  
 - **F1-score**: também superior, mesmo com o desbalanceamento da base.  
-- **Conclusão**: o modelo final escolhido foi o **XGBoost**, salvo em `models/xgb_model.pkl`. 
 
+### Conclusão 
+Apesar de todos os modelos apresentarem métricas próximas e tendo como desafio o desbalanceamento da base, o **XGBoost foi escolhido como modelo final** por:
+
+- Obter os melhores valores de **recall, F1-score e ROC AUC**, mesmo que com margens pequenas.   
+- Ser mais robusto para capturar **relações não lineares** entre variáveis clínicas, demográficas e epidemiológicas.  
+- Embora o processo de busca de hiperparâmetros tenha demandado mais tempo, uma vez definidos os melhores parâmetros, o XGBoost apresentou **treinamento rápido e pouco custoso**, viabilizando re-treinos periódicos em produção.
 
 > ℹ️ _Aviso: Este projeto tem fins educacionais e de pesquisa. O modelo não substitui avaliação médica._
