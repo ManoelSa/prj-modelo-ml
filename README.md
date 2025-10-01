@@ -121,4 +121,20 @@ Apesar de todos os modelos apresentarem métricas próximas e tendo como desafio
 - Ser mais robusto para capturar **relações não lineares** entre variáveis clínicas, demográficas e epidemiológicas.  
 - Embora o processo de busca de hiperparâmetros tenha demandado mais tempo, uma vez definidos os melhores parâmetros, o XGBoost apresentou **treinamento rápido e pouco custoso**, viabilizando re-treinos periódicos em produção.
 
+### Observação final
+
+Embora o **XGBoost** tenha apresentado os melhores resultados entre os modelos avaliados, as métricas globais ainda não são boas devido ao **forte desbalanceamento da base**.  
+
+- **Recall (~0.64)**: indica a proporção de casos graves (classe 1) que o modelo conseguiu identificar corretamente.  
+- **Precision (~0.06)**: mostra que, entre os casos classificados como graves, poucos realmente eram. Isso é esperado, pois o modelo tende a gerar **mais falsos positivos** para não deixar passar casos graves.  
+- **F1-score (~0.10)**: baixo pelo desbalanceamento, mas superior ao dos demais modelos.  
+- **ROC AUC (~0.73)**: mede a capacidade do modelo de **ranquear** casos graves acima dos não graves (0.5 = aleatório; 1.0 = perfeito). É **independente do threshold** e indica **separação moderada** entre as classes.
+
+📌 **Importante**: na aplicação **Streamlit**, o **threshold de decisão** (por padrão 0.5) pode ser ajustado.  
+- **Threshold mais baixo** → aumenta a sensibilidade (recall), detectando mais casos graves, mas gera mais alarmes falsos.  
+- **Threshold mais alto** → reduz alarmes falsos, mas aumenta o risco de não identificar alguns casos graves.  
+
+Esse ajuste permite calibrar o modelo conforme o **contexto de uso** (apoio clínico, gestão hospitalar, análises epidemiológicas, etc.).
+
+
 > ℹ️ _Aviso: Este projeto tem fins educacionais e de pesquisa. O modelo não substitui avaliação médica._
