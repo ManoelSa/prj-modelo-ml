@@ -47,7 +47,6 @@ faixa_etaria = st.radio("Selecione", options=["Adolescente", "Crianca", "Adulto"
 faixa_etaria_Adulto  = 1 if faixa_etaria == "Adulto"  else 0
 faixa_etaria_Crianca = 1 if faixa_etaria == "Crianca" else 0
 faixa_etaria_Idoso   = 1 if faixa_etaria == "Idoso"   else 0
-# Adolescente => todos 0
 
 # Gestante — só aparece se sexo = Feminino e faixa etária = Adolescente ou Adulto
 if cs_sexo == 1 and faixa_etaria not in ["Crianca", "Idoso"]:
@@ -60,7 +59,7 @@ if cs_sexo == 1 and faixa_etaria not in ["Crianca", "Idoso"]:
     gestante_cat_nao        = 1 if gestante_cat == "nao"        else 0
     gestante_cat_nao_aplica = 1 if gestante_cat == "nao_aplica" else 0
 else:
-    # Preenche automático para masculino: não gestante
+    # Preenche automático (masculino, criança ou idoso): não gestante
     gestante_cat_ignorado   = 0
     gestante_cat_nao        = 1
     gestante_cat_nao_aplica = 0
