@@ -73,7 +73,7 @@ prj-modelo-ml/
 ## 💻 Exemplos de uso Localmente
 ```bash
 # 1. Clone o repositório
-git https://github.com/ManoelSa/prj-modelo-ml.git
+git clone https://github.com/ManoelSa/prj-modelo-ml.git
 cd prj-modelo-ml
 
 # 2. (Opcional) Crie e ative um ambiente virtual
