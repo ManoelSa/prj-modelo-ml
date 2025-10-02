@@ -3,7 +3,7 @@
 ## 🎯 Objetivo
 A dengue é uma doença que pode evoluir para **quadros graves**, exigindo atenção rápida no diagnóstico e tratamento.
 Também conhecida como dengue com sinais de alarme, a dengue grave é aquela que ocorre quando, de três a sete dias após o início dos sintomas tradicionais, o paciente entra em uma fase crítica, apresentando piora no estado clínico geral. A doença progride, geralmente, para sintomas graves e pode inclusive levar a óbito.  
-O objetivo desta classificação é **prever a gravidade da doença** a partir de dados clínicos, demográficos e epidemiológicos, permitindo:  
+O objetivo deste projeto é desenvolver um modelo de classificação baseado em Machine Learning capaz de **prever a gravidade da doença** a partir de dados clínicos, demográficos e epidemiológicos, permitindo:  
 - **Apoiar profissionais de saúde** na tomada de decisão.  
 - **Agilizar o tratamento** de pacientes com maior risco.  
 - **Auxiliar na gestão hospitalar**, prevenindo sobrecarga e melhorando o planejamento de recursos.
