@@ -54,7 +54,7 @@ prj-modelo-ml/
 
 ```
 
-## 🔀 Fluxo de Uso
+## 🔀 Fluxo de Uso da Aplicação
 
 ```text
 [Usuário] --(input de dados clínicos)--> Streamlit 
