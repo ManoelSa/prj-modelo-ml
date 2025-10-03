@@ -105,9 +105,9 @@ Foram testados três algoritmos principais, comparados pelas métricas mais rele
 
 | Modelo                  | Accuracy | Precision | Recall | F1-score | ROC AUC |
 |--------------------------|----------|-----------|--------|----------|---------|
-| **XGBClassifier**        | 0.706    | 0.056     | **0.639** | **0.103**  | **0.731** |
-| DecisionTreeClassifier   | 0.696    | 0.053     | 0.624  | 0.098    | 0.712   |
-| LogisticRegression       | 0.700    | 0.052     | 0.598  | 0.095    | 0.702   |
+| **XGBClassifier**        | 0.708    | 0.056     | **0.636** | **0.103**  | **0.731** |
+| DecisionTreeClassifier   | 0.694    | 0.053     | 0.624  | 0.097    | 0.713   |
+| LogisticRegression       | 0.698    | 0.051     | 0.597  | 0.094    | 0.702   |
 
 ### Critérios da escolha
 - **Recall**: XGBoost obteve o melhor valor, fundamental para **não deixar de identificar casos graves**.  
